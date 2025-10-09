@@ -1,5 +1,7 @@
 package com.senai.infob.aula.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +29,13 @@ public class EstudanteService {
             return true;
         }
         return false;
+    }
+
+    public Estudante buscarPorId(Integer Id) {
+        return EstudanteRepository.findById(Id).get();
+    }
+
+    public List<Estudante> listarTodos() {
+        return EstudanteRepository.findAll();
     }
 }

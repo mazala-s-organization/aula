@@ -1,5 +1,7 @@
 package com.senai.infob.aula.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.senai.infob.aula.models.Estudante;
 import com.senai.infob.aula.services.EstudanteService;
-// post (insert), get (select), put (update), delete (delete)
+
 @RestController
 public class EstudanteController {
     
@@ -35,4 +37,15 @@ public class EstudanteController {
     }
     return "Falha ao remover o usuário";
  }
+   @GetMapping("/buscar/{id}")
+    public Estudante buscarPorId(@PathVariable Integer id) {
+        return estudanteService.buscarPorId(id);
+    }
+
+    @GetMapping("/listar")
+    public List<Estudante> listarTodos() {
+        return estudanteService.listarTodos();
+    }
+    
+    
 }
