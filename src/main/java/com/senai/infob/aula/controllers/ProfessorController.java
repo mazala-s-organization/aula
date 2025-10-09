@@ -11,48 +11,47 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.senai.infob.aula.models.Estudante;
-import com.senai.infob.aula.services.EstudanteService;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.senai.infob.aula.models.Professor;
+import com.senai.infob.aula.services.ProfessorService;
 
 
 @RestController
-public class EstudanteController {
+public class ProfessorController {
     
     @Autowired
-    public EstudanteService estudanteService;
+    public ProfessorService professorService;
     
     @GetMapping("/count")
     public Long count(){
-        return estudanteService.count();
+        return professorService.count();
     }
     
     @PostMapping("/salvar")
-    public Estudante salvar(@RequestBody Estudante estudante) {
-        return estudanteService.salvar(estudante);
+    public Professor salvar(@RequestBody Professor estudante) {
+        return professorService.salvar(estudante);
     }
 
     @DeleteMapping("/delete/{id}")
     public String deletar(@PathVariable Integer id) {
-        boolean deletou = estudanteService.deletar(id);
+        boolean deletou = professorService.deletar(id);
         if (deletou) {
             return "Usuário removido com sucesso";
     }
     return "Falha ao remover o usuário";
  }
    @GetMapping("/buscar/{id}")
-    public Estudante buscarPorId(@PathVariable Integer id) {
-        return estudanteService.buscarPorId(id);
+    public Professor buscarPorId(@PathVariable Integer id) {
+        return professorService.buscarPorId(id);
     }
 
     @GetMapping("/listar")
-    public List<Estudante> listarTodos() {
-        return estudanteService.listarTodos();
+    public List<Professor> listarTodos() {
+        return professorService.listarTodos();
     }
     
  @PutMapping("/atualizarUm/{id}")
-    public Estudante atualizarUm(@PathVariable Integer id, @RequestBody Estudante estudante) {
-        return estudanteService.atualizarUm(estudante, id);
+    public Professor atualizarUm(@PathVariable Integer id, @RequestBody Professor professor) {
+        return professorService.atualizarUm(professor, id);
     }
     
 }

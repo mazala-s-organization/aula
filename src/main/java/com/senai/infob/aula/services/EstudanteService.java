@@ -38,4 +38,12 @@ public class EstudanteService {
     public List<Estudante> listarTodos() {
         return EstudanteRepository.findAll();
     }
+
+    public Estudante atualizarUm(Estudante estudante, Integer id) {
+        Estudante e = buscarPorId(id);
+        if (e != null) {
+            return EstudanteRepository.save(estudante);
+        }
+        return null;
+    }
 }
